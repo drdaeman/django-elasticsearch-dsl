@@ -39,6 +39,10 @@ setup(
     url='https://github.com/sabricot/django-elasticsearch-dsl',
     packages=[
         'django_elasticsearch_dsl',
+        'django_elasticsearch_dsl.fields',
+        'django_elasticsearch_dsl.management',
+        'django_elasticsearch_dsl.management.commands',
+        'django_elasticsearch_dsl.test',
     ],
     include_package_data=True,
     install_requires=[

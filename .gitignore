@@ -45,3 +45,7 @@ output/*/index.html
 
 # Sphinx
 docs/_buildenv*
+
+# We only keep MANIFEST.in in the repo
+# http://stackoverflow.com/a/29886639/116546
+MANIFEST
