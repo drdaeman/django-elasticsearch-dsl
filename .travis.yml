@@ -56,3 +56,15 @@ script: tox -e $TOX_ENV -- --elasticsearch
 
 after_success:
   - codecov -e $TOX_ENV
+
+# publish the package
+deploy:
+  provider: pypi
+  user: travis
+  server: https://pypi.liveedu.tv/root/public/
+  password:
+    secure: "l7O591HKjvL8YZ8eGYoubtzPQhzfXjG0satfcRHSoV8mdEWrhEAG6B3phkS8m29KdSkY/xtzm1l7J2gHcW2lT9PkQMFQb0QBEJ3qxfBVNk6pqYxaEwNiHO4TN1PTQ69+ir87dlJTDmgXQ7gg238s97L/wSHKo8TfxnUnHykm11H6JrbgzLcofpOgGUgs4nqyfI6guDWsNd+1F5Po+TxF8/HPVLhQHcii9IHZL+UZypZ2wRjRV/T2uWAbd2IN8X6TMJRwDfKv+U+cBXRz6OfF3hWamfRPI+6j/5vTFAZF3WoHUo7ITvlrEk7N2bc4tVqbCcdcPzk1ZBWRG5seyJ8D4+TMqDFrt2MW4VxhtHVjnBHUCTl5oVyLyNfiTPMFu0tq7Srw0i2cing76Be5oMqd/e5wCdGMvNtF1an7M7euWIVPpq/+q1c2gepVfuacVvNMs0Smp74eKcal9uERYffkVzQge5m4ztuTv5wwGGBsCaCu0YcLZhr89VEA6sWf3TdK2I4QCg8mzIW/UtXXZiax4/NkdZAL1hafnH3ygbqtsF/zjcuUL3e7Yp5xxZI8di53oIPn+PGHLMW3O9TTo1DdigbvBRv9ZfmxeINM7e7H0Z4pexV2ozTgkEMKDMRrCi/YMH85LPrwOHYUvo2EqpjVTqhqkSA5bTXAsHRUEfrCkaU="
+  distributions: "sdist bdist_wheel"
+  on:
+    branch: liveedu
+    condition: $TOX_ENV =~ "-django-111-es5$"
