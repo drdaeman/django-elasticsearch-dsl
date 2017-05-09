@@ -56,3 +56,14 @@ script: tox -e $TOX_ENV -- --elasticsearch
 
 after_success:
   - codecov -e $TOX_ENV
+
+# publish the package
+deploy:
+  provider: pypi
+  user: travis
+  server: https://pypi.liveedu.tv/root/public/
+  password:
+    secure: "eolwmciRBOmFss6RDxWDoyK97ci2nUybUiQYRnwZIBgxBvWL8rtbI3gX0B+KZT2kf3AMID4x6MHYLDya7gVCFj83OpC/Kf1503X8BDUjsKOvhIcjXQnMm2+Rb1f3w8kWNOnkfSxarpC/BAdfq5NMBDUCpd0gR2jgFu5Hl5iW1z4+H/nBQkCXAMdODR5CtxOhzQYZU3qT5PWlo2cWrIFr8W3C+hRvCDu/Td/D+kHy02H/4YQtz9iwvTDAULdyxvSY3BBooJAG3jmuu7IQm2lHFxatsSnyX2GWlqzHQGvqwLt4C2fT1hglCPLhfyLQtunGhJbg2z7g799stHE+8ks/RfpK7btkYgnpQCqHiN+DcVt2BAGKKEGkQmqFu+Bvp+hVnMWbDGkdA5KNel4knE1K4X0UXzFa6fuN0F9xVCb4AXtjhUn66jz7bDD7D3d0sX6SZD+o61J2zHsc6cebnz726JoeUAahfrl4DlkSYR75Du5EsaWHkrXFf6xnXyhynWLIkWWmZ6OyHBOXdwwDQwvseHN4nX/mreL/plbTCZKx8pYhT1LAXzB25al9rQukqQFmpS18SlX38W22Et4mNGIeRgHNvCQZ7KcS8OpmZcN/+3L2Cddptii1JR3VwTURwWQSLXdhZ8OKoX+lkRbBSr/erb5jtPYjHPOvcXfBVPp16MA="
+  distributions: "sdist bdist_wheel"
+  on:
+    branch: liveedu
