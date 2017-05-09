@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, skipIf
 from mock import Mock, NonCallableMock
 from django_elasticsearch_dsl.fields import (
     DEDField,
@@ -13,15 +13,14 @@ from django_elasticsearch_dsl.fields import (
     GeoShapeField,
     IntegerField,
     IpField,
-    KeywordField,
     ListField,
     LongField,
     NestedField,
     ObjectField,
     ShortField,
     StringField,
-    TextField,
 )
+from django_elasticsearch_dsl import fields
 from django_elasticsearch_dsl.exceptions import VariableLookupError
 
 
@@ -299,18 +298,20 @@ class ListFieldTestCase(TestCase):
             field.get_value_from_instance(instance), instance.foo.bar)
 
 
+@skipIf(not hasattr(fields, "TextField"), "No TextField in this ES version")
 class TextFieldTestCase(TestCase):
     def test_get_mapping(self):
-        field = TextField()
+        field = fields.TextField()
 
         self.assertEqual({
             'type': 'text',
         }, field.to_dict())
 
 
+@skipIf(not hasattr(fields, "KeywordField"), "No KeywordField in this ES version")
 class KeywordFieldTestCase(TestCase):
     def test_get_mapping(self):
-        field = KeywordField()
+        field = fields.KeywordField()
 
         self.assertEqual({
             'type': 'keyword',

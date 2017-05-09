@@ -15,15 +15,20 @@ from .fields import (  # noqa
     GeoShapeField,
     IntegerField,
     IpField,
-    KeywordField,
     ListField,
     LongField,
     NestedField,
     ObjectField,
     ShortField,
     StringField,
-    TextField,
 )
+try:
+    from .fields import (  # noqa
+        KeywordField,
+        TextField,
+    )
+except ImportError:
+    pass
 
 __version__ = '0.1.0'
 

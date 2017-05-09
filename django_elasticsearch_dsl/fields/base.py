@@ -15,15 +15,13 @@ from elasticsearch_dsl.field import (
     GeoShape,
     Integer,
     Ip,
-    Keyword,
     Long,
     Nested,
     Object,
     Short,
     String,
-    Text,
 )
-from .exceptions import VariableLookupError
+from ..exceptions import VariableLookupError
 
 
 class DEDField(Field):
@@ -161,10 +159,6 @@ class IpField(DEDField, Ip):
     pass
 
 
-class KeywordField(DEDField, Keyword):
-    pass
-
-
 class LongField(DEDField, Long):
     pass
 
@@ -178,8 +172,4 @@ class ShortField(DEDField, Short):
 
 
 class StringField(DEDField, String):
-    pass
-
-
-class TextField(DEDField, Text):
     pass
