@@ -67,4 +67,4 @@ deploy:
   distributions: "sdist bdist_wheel"
   on:
     branch: liveedu
-    condition: $TOX_ENV =~ "-django-111-es5$"
+    condition: "$TOX_ENV =~ ^py(py)?[0-9]*-django-111-es5$"
